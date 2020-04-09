@@ -6,27 +6,17 @@
 </head>
 <body>
 <div id="app">
-    <h1>String: {{name}}</h1>
-    <h1>Sum: {{10 + 60}}</h1>
-    <h1>Number: {{number}}</h1>
-    <h1>Method: {{sayHello()}}</h1>
-    <h1>Statement: {{isOk ? 'I am OK' : 'Im not Ok'}}</h1>
-    <h1>Function {{ string.split('').reverse().join('') }}</h1>
+    <a :href="url">{{url}}</a>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
     new Vue({
         el: '#app',
         data: {
-            name: 'Vue!',
-            number: 100,
-            isOk: true,
-            string: 'My name is Sergey',
+            url: 'http://google.com'
         },
         methods: {
-            sayHello: function () {
-                return 'I am function'
-            }
+
         }
     })
 </script>
