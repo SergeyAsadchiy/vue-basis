@@ -13,6 +13,11 @@
     <h2 @mousemove="handleMouseMove">
         X: {{x}} / Y: {{y}}
         <span @mousemove.stop="">Не изменять</span>
+
+        <hr>
+
+        <input type="text" @keyup.enter="alertValue">
+        <input type="text" @keyup.space="alertValue">
     </h2>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -27,6 +32,9 @@
             handleMouseMove: function (e) {
                 this.x = e.clientX;
                 this.y = e.clientY;
+            },
+            alertValue: function (e) {
+                alert(e.target.value)
             }
         }
     })
