@@ -6,18 +6,11 @@
 </head>
 <body>
 <div id="app">
+    <input type="text" v-model="inputValue"><br><br>
+    <input type="text" v-model.lazy="inputValue">
+
     <h2>
-        <a href="http://google.com" target="_blank" @click.prevent="">Google</a>
-    </h2>
-
-    <h2 @mousemove="handleMouseMove">
-        X: {{x}} / Y: {{y}}
-        <span @mousemove.stop="">Не изменять</span>
-
-        <hr>
-
-        <input type="text" @keyup.enter="alertValue">
-        <input type="text" @keyup.space="alertValue">
+        {{inputValue}}
     </h2>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -25,17 +18,10 @@
     new Vue({
         el: '#app',
         data: {
-            x: 0,
-            y: 0
+            inputValue: "initial val"
         },
         methods: {
-            handleMouseMove: function (e) {
-                this.x = e.clientX;
-                this.y = e.clientY;
-            },
-            alertValue: function (e) {
-                alert(e.target.value)
-            }
+
         }
     })
 </script>
