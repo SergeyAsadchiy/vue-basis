@@ -21,13 +21,21 @@
 
 <div id="app">
 
-    <input type="text" v-model="color">
-    <input type="number" step="10" v-model="height">
-    <hr>
+    <button @click="isVisible=!isVisible">toggle</button>
 
-    <div class="circle" :style="{'background': color, 'height': height + 'px'}"></div>
-    <div class="circle" :style="circleClasses"></div>
-    <div class="circle" :style="[circleClasses, {width: height + 'px'}]"></div>
+    <h2 v-if="isVisible">I am visible</h2>
+    <h2 v-if="!isVisible">No, I am not</h2>
+
+    <h2 v-if="isVisible">I am visible</h2>
+    <h2 v-else>No, I am not</h2>
+
+    <hr>
+    <h2 v-if="type ==='a'">A</h2>
+    <h2 v-else-if="type ==='b'">B</h2>
+    <h2 v-else-if="type ==='c'">C</h2>
+    <h2 v-else>Not match</h2>
+    <hr>
+    <input type="text" v-model="type">
 
 </div>
 
@@ -37,18 +45,10 @@
     new Vue({
         el: '#app',
         data: {
-            isActive: false,
-            color: 'blue',
-            height: 100
+            isVisible: true,
+            type: 'a'
         },
-        computed: {
-            circleClasses: function () {
-                return {
-                    'background': this.color,
-                    'height': this.height + 'px'
-                }
-            }
-        },
+        computed: {},
         methods: {
         }
     })
