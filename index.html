@@ -8,58 +8,49 @@
     <title>Document</title>
 </head>
 <body>
+<div>
     <div id="app">
-        <ul>
-            <li>{{people[0]}}</li>
-            <li>{{people[1]}}</li>
-            <li>{{people[2]}}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="item in people">{{item}}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="(item, ind) in people">{{ind +1}} - {{item}}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="item in people2">{{item.name}} - {{item.age}}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="item in 3">{{item}}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="item in 3">{{item}}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="(val, keu, index) in person">{{index}}. {{key}} - {{val}}</li>
-        </ul>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-    <script>
+        <h2> Counter: {{counter}} / {{counter2}}</h2>
+        <h3>{{result()}}</h3>
+        <h3>{{compResult}}</h3>
+
+        <button @click="add">Add</button>
+        <button @click="sub">Sub</button>
+        <hr>
+        <button @click="counter2++">AddCount2</button>
+
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
     new Vue({
         el: '#app',
         data: {
-            people: [
-                'Vlad', 'Max', 'Elena'
-            ],
-            people2: [
-                {name: 'Vlad', age: 20},
-                {name: 'Max', age: 25},
-                {name: 'Elena', age: 30},
-            ],
-            person: {
-                name: 'Max',
-                age: 25,
-                job: 'frontEnd'
+            counter: 0,
+            counter2: 0,
+        },
+        methods: {
+            add(){
+                this.counter ++;
+            },
+            sub(){
+                this.counter --;
+            },
+            result(){
+                console.log('result');
+                return this.counter >3 ? 'More 3' : 'Less 3';
+            }
+        },
+        computed: {
+            compResult(){
+                console.log('compResult');
+                return this.counter >3 ? 'More 3' : 'Less 3';
+
             }
         }
     })
-    </script>
+</script>
 </body>
 </html>
