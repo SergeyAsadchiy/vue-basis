@@ -10,27 +10,19 @@
 <body>
 <div>
     <div id="app">
-        <h2 ref="heading"> {{title}} </h2>
-        <button @click="updateFirstTitle">updateTitle</button>
-        <hr ref="horline">
 
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
     vue = new Vue({
-        el: '#app',
         data: {
-            title: 'hello',
+            title: 'hello2',
         },
-        methods: {
-            updateFirstTitle() {
-                this.title = 'updated from vue';
-                this.$refs.heading.style.color = 'red';
-                console.log(this.$refs)
-            }
-        }
-    })
+        template: '<h1> {{title}} </h1>',
+        methods: {}
+    });
+    vue.$mount('#app')
 </script>
 </body>
 </html>
