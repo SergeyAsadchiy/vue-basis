@@ -10,37 +10,24 @@
 <body>
 <div>
     <div id="app">
-        <h2> {{title}} </h2>
-        <h3> {{newField}} </h3>
-        <button @click="title='updateTitle'">updateTitle</button>
-    </div>
-    <hr>
-    <div id="app2">
-        <h2> {{title}} </h2>
-        <button @click="updateFirstTitle">updateFirstTitle</button>
+        <h2 ref="heading"> {{title}} </h2>
+        <button @click="updateFirstTitle">updateTitle</button>
+        <hr ref="horline">
+
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
-    var vue1 = new Vue({
+    vue = new Vue({
         el: '#app',
         data: {
             title: 'hello',
         },
-    });
-
-    console.log(vue1);
-    vue1.newField = 'new text';
-
-    var vue2 = new Vue({
-        el: '#app2',
-        data: {
-            title: 'hello from instance 2',
-        },
         methods: {
             updateFirstTitle() {
-                vue1.title = 'updated from 2th vue'
-                vue1.newField = 'new text from 2th vue';
+                this.title = 'updated from vue';
+                this.$refs.heading.style.color = 'red';
+                console.log(this.$refs)
             }
         }
     })
