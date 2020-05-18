@@ -10,33 +10,37 @@
 <body>
 <div>
     <div id="app">
-
-        <h2> Counter: {{counter}} </h2>
-
-        <button @click="add">Add</button>
-        <button @click="sub">Sub</button>
-
-
+        <h2> {{title}} </h2>
+        <h3> {{newField}} </h3>
+        <button @click="title='updateTitle'">updateTitle</button>
+    </div>
+    <hr>
+    <div id="app2">
+        <h2> {{title}} </h2>
+        <button @click="updateFirstTitle">updateFirstTitle</button>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
-    new Vue({
+    var vue1 = new Vue({
         el: '#app',
         data: {
-            counter: 0,
+            title: 'hello',
+        },
+    });
+
+    console.log(vue1);
+    vue1.newField = 'new text';
+
+    var vue2 = new Vue({
+        el: '#app2',
+        data: {
+            title: 'hello from instance 2',
         },
         methods: {
-            add() {
-                this.counter++;
-            },
-            sub() {
-                this.counter--;
-            },
-        },
-        watch: {
-            counter(val) {
-                console.log('from watch', val)
+            updateFirstTitle() {
+                vue1.title = 'updated from 2th vue'
+                vue1.newField = 'new text from 2th vue';
             }
         }
     })
