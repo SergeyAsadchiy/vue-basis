@@ -1,57 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vue JS</title>
-    <style>
-        .circle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 1px solid black;
-            display: inline-block;
-            margin: 60px;
-        }
-        .red {background: red;}
-        .blue {background: blue;}
-        .green {background: green;}
-    </style>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
+    <div id="app">
+        <ul>
+            <li>{{people[0]}}</li>
+            <li>{{people[1]}}</li>
+            <li>{{people[2]}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="item in people">{{item}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(item, ind) in people">{{ind +1}} - {{item}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="item in people2">{{item.name}} - {{item.age}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="item in 3">{{item}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="item in 3">{{item}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(val, keu, index) in person">{{index}}. {{key}} - {{val}}</li>
+        </ul>
+    </div>
 
-<div id="app">
-
-    <button @click="isVisible=!isVisible">toggle</button>
-
-    <h2 v-if="isVisible">I am visible</h2>
-    <h2 v-if="!isVisible">No, I am not</h2>
-
-    <h2 v-if="isVisible">I am visible</h2>
-    <h2 v-else>No, I am not</h2>
-
-    <hr>
-    <h2 v-if="type ==='a'">A</h2>
-    <h2 v-else-if="type ==='b'">B</h2>
-    <h2 v-else-if="type ==='c'">C</h2>
-    <h2 v-else>Not match</h2>
-    <hr>
-    <input type="text" v-model="type">
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-<script>
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script>
     new Vue({
         el: '#app',
         data: {
-            isVisible: true,
-            type: 'a'
-        },
-        computed: {},
-        methods: {
+            people: [
+                'Vlad', 'Max', 'Elena'
+            ],
+            people2: [
+                {name: 'Vlad', age: 20},
+                {name: 'Max', age: 25},
+                {name: 'Elena', age: 30},
+            ],
+            person: {
+                name: 'Max',
+                age: 25,
+                job: 'frontEnd'
+            }
         }
     })
-</script>
+    </script>
 </body>
 </html>
