@@ -10,19 +10,60 @@
 <body>
 <div>
     <div id="app">
-
+        <h2> {{title}} </h2>
+        <button @click="updateFirstTitle">updateTitle</button>
+        <button @click="doDestroy">doDestroy</button>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
     vue = new Vue({
+        el: '#app',
         data: {
-            title: 'hello2',
+            title: 'hello',
         },
-        template: '<h1> {{title}} </h1>',
-        methods: {}
-    });
-    vue.$mount('#app')
+        methods: {
+            updateFirstTitle() {
+                this.title = 'updated from vue';
+            },
+            doDestroy(){
+                this.$destroy()
+            }
+        },
+        beforeCreate(){
+            console.log('beforeCreate');
+            alert('beforeCreate')
+        },
+        created(){
+            console.log('created');
+            alert('created')
+        },
+        beforeMount(){
+            console.log('beforeMount')
+            alert('beforeMount')
+        },
+        mounted(){
+            console.log('mounted');
+            alert('mounted')
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate')
+            alert('beforeUpdate')
+            this.title = 'updated from BeforeUpdate'
+        },
+        updated(){
+            console.log('updated');
+            alert('updated')
+        },
+        beforeDestroy(){
+            console.log('beforeDestroy')
+            alert('beforeDestroy')
+        },
+        destroyed(){
+            console.log('destroyed');
+            alert('destroyed')
+        },
+    })
 </script>
 </body>
 </html>
